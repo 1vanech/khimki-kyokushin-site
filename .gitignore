@@ -1,0 +1,21 @@
+# Python environments and generated files
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+
+# Local environment variables and Telegram credentials
+.env
+*.env
+scrt.env
+
+# Editor and operating-system files
+.DS_Store
+.vscode/
+
+# Local archives, drafts, and server-only files
+Acss/
+Ajs/
+adsdasdasda.html
+Сайтик.zip
+Обработчик заявок/
