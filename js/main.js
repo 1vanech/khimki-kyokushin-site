@@ -49,7 +49,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 5. Фильтрация галереи
+    // 5. Карточки тренеров: на сенсорных экранах открыта только одна карточка.
+    const trainerCards = document.querySelectorAll('.trainer-card');
+    const isTouchScreen = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+    if (isTouchScreen) {
+        trainerCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const shouldOpen = !card.classList.contains('flipped');
+
+                trainerCards.forEach(otherCard => {
+                    if (otherCard !== card) otherCard.classList.remove('flipped');
+                });
+
+                card.classList.toggle('flipped', shouldOpen);
+            });
+        });
+    }
+
+    // 6. Фильтрация галереи
     const filterBtns = document.querySelectorAll('.filter-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
 
@@ -70,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 6. Просмотр фото (Lightbox Modal) с поддержкой стрелок и Escape
+    // 7. Просмотр фото (Lightbox Modal) с поддержкой стрелок и Escape
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
     const lightboxCaption = document.getElementById('lightboxCaption');
@@ -130,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 7. Скролл-анимации и счетчики
+    // 8. Скролл-анимации и счетчики
     const observerOptions = { root: null, threshold: 0.15 };
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -166,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, stepTime);
     }
 
-    // 8. Форма обратной связи
+    // 9. Форма обратной связи
     const contactForm = document.getElementById('contactForm');
     const formSuccess = document.getElementById('formSuccess');
     const closeSuccess = document.getElementById('closeSuccess');

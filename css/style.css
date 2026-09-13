@@ -543,9 +543,14 @@ header.scrolled {
     border-radius: 16px;
 }
 
-.trainer-card:hover .trainer-card-inner,
 .trainer-card.flipped .trainer-card-inner {
     transform: rotateY(180deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .trainer-card:hover .trainer-card-inner {
+        transform: rotateY(180deg);
+    }
 }
 
 .trainer-front,
