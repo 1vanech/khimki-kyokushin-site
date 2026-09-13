@@ -621,6 +621,53 @@ header.scrolled {
     box-shadow: 0 0 25px var(--accent-glow);
 }
 
+/* На сенсорных устройствах 3D-поворот большой фотографии заметно нагружает браузер.
+   Используем лёгкое переключение сторон; на компьютерах остаётся привычный переворот. */
+@media (hover: none), (pointer: coarse) {
+    .trainer-card {
+        perspective: none;
+    }
+
+    .trainer-card-inner,
+    .trainer-card.flipped .trainer-card-inner {
+        transform: none;
+        transform-style: flat;
+        transition: none;
+    }
+
+    .trainer-front,
+    .trainer-back {
+        transform: none;
+        transition: opacity 0.22s ease, visibility 0s linear 0.22s;
+        will-change: opacity;
+    }
+
+    .trainer-front {
+        z-index: 1;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .trainer-back {
+        z-index: 2;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .trainer-card.flipped .trainer-front {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .trainer-card.flipped .trainer-back {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition-delay: 0s, 0s;
+    }
+}
+
 .trainer-back h4 {
     color: var(--accent-yellow);
     font-size: 1.4rem;
