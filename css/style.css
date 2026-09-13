@@ -474,12 +474,25 @@ header.scrolled {
 }
 
 .location-detail {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    margin-bottom: 5px;
+    color: #c7c7d0;
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    line-height: 1.45;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+.location-detail-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--accent-yellow);
+    flex: 0 0 16px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .map-container {
